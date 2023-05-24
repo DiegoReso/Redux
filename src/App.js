@@ -1,11 +1,43 @@
+import { useState } from "react"
+import { useSelector,useDispatch } from "react-redux/es/exports"
+
 
 
 function App() {
+
+  const tasks = useSelector(state => state.tasks)
+  const [inputTask,setInputTask] =useState()
+  const dispatch = useDispatch()
+
+
+  const handleInput=(e)=>{
+    setInputTask(e.target.value)
+    
+  }
+
+
+  const handleSubmit=()=>{
+    dispatch({
+      type: 'ADD_TASK',
+      payload: inputTask
+    })
+
+
+  }
+
+
+
   return (
-    <div >
-        
-    </div>
-  );
+    <>
+    <ul >
+        {
+          tasks.map (task => <li key={task}>{task}</li>)
+        }
+    </ul>
+    <input type="text" onChange={handleInput} value={inputTask}/>
+    <button onClick={handleSubmit}>Inserir</button>
+    </>
+  )
 }
 
 export default App;
