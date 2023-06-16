@@ -1,4 +1,4 @@
-Introdução dao Redux.
+Introdução ao Redux.
 
 Projeto realizado para trabalhar estados com o Redux.
 
